@@ -1,0 +1,420 @@
+{
+    "Parameters": {
+        "BootstrapVersion": {
+            "Default": "/cdk-bootstrap/hnb659fds/version",
+            "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+            "Type": "AWS::SSM::Parameter::Value<String>"
+        }
+    },
+    "Resources": {
+        "SandboxVpcAAA107BE": {
+            "Properties": {
+                "CidrBlock": "10.6.0.0/16",
+                "EnableDnsHostnames": true,
+                "EnableDnsSupport": true,
+                "InstanceTenancy": "default",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "NetworkStack/SandboxVpc"
+                    }
+                ]
+            },
+            "Type": "AWS::EC2::VPC"
+        },
+        "SandboxVpcIGWBAB9DB24": {
+            "Properties": {
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "NetworkStack/SandboxVpc"
+                    }
+                ]
+            },
+            "Type": "AWS::EC2::InternetGateway"
+        },
+        "SandboxVpcVPCGW77762E77": {
+            "Properties": {
+                "InternetGatewayId": {
+                    "Ref": "SandboxVpcIGWBAB9DB24"
+                },
+                "VpcId": {
+                    "Ref": "SandboxVpcAAA107BE"
+                }
+            },
+            "Type": "AWS::EC2::VPCGatewayAttachment"
+        },
+        "SandboxVpcisolatedSubnet1RouteTableAssociation64BA2C69": {
+            "Properties": {
+                "RouteTableId": {
+                    "Ref": "SandboxVpcisolatedSubnet1RouteTableCBF1CC87"
+                },
+                "SubnetId": {
+                    "Ref": "SandboxVpcisolatedSubnet1SubnetFFB09A75"
+                }
+            },
+            "Type": "AWS::EC2::SubnetRouteTableAssociation"
+        },
+        "SandboxVpcisolatedSubnet1RouteTableCBF1CC87": {
+            "Properties": {
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "NetworkStack/SandboxVpc/isolatedSubnet1"
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "SandboxVpcAAA107BE"
+                }
+            },
+            "Type": "AWS::EC2::RouteTable"
+        },
+        "SandboxVpcisolatedSubnet1SubnetFFB09A75": {
+            "Properties": {
+                "AvailabilityZone": "dummy1a",
+                "CidrBlock": "10.6.48.0/20",
+                "MapPublicIpOnLaunch": false,
+                "Tags": [
+                    {
+                        "Key": "aws-cdk:subnet-name",
+                        "Value": "isolated"
+                    },
+                    {
+                        "Key": "aws-cdk:subnet-type",
+                        "Value": "Isolated"
+                    },
+                    {
+                        "Key": "Name",
+                        "Value": "NetworkStack/SandboxVpc/isolatedSubnet1"
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "SandboxVpcAAA107BE"
+                }
+            },
+            "Type": "AWS::EC2::Subnet"
+        },
+        "SandboxVpcisolatedSubnet2RouteTable50C03A72": {
+            "Properties": {
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "NetworkStack/SandboxVpc/isolatedSubnet2"
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "SandboxVpcAAA107BE"
+                }
+            },
+            "Type": "AWS::EC2::RouteTable"
+        },
+        "SandboxVpcisolatedSubnet2RouteTableAssociationE1A6E2DD": {
+            "Properties": {
+                "RouteTableId": {
+                    "Ref": "SandboxVpcisolatedSubnet2RouteTable50C03A72"
+                },
+                "SubnetId": {
+                    "Ref": "SandboxVpcisolatedSubnet2Subnet5D79D53B"
+                }
+            },
+            "Type": "AWS::EC2::SubnetRouteTableAssociation"
+        },
+        "SandboxVpcisolatedSubnet2Subnet5D79D53B": {
+            "Properties": {
+                "AvailabilityZone": "dummy1b",
+                "CidrBlock": "10.6.64.0/20",
+                "MapPublicIpOnLaunch": false,
+                "Tags": [
+                    {
+                        "Key": "aws-cdk:subnet-name",
+                        "Value": "isolated"
+                    },
+                    {
+                        "Key": "aws-cdk:subnet-type",
+                        "Value": "Isolated"
+                    },
+                    {
+                        "Key": "Name",
+                        "Value": "NetworkStack/SandboxVpc/isolatedSubnet2"
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "SandboxVpcAAA107BE"
+                }
+            },
+            "Type": "AWS::EC2::Subnet"
+        },
+        "SandboxVpcisolatedSubnet3RouteTableAssociation129C5C02": {
+            "Properties": {
+                "RouteTableId": {
+                    "Ref": "SandboxVpcisolatedSubnet3RouteTableE83231E9"
+                },
+                "SubnetId": {
+                    "Ref": "SandboxVpcisolatedSubnet3Subnet771F2FF4"
+                }
+            },
+            "Type": "AWS::EC2::SubnetRouteTableAssociation"
+        },
+        "SandboxVpcisolatedSubnet3RouteTableE83231E9": {
+            "Properties": {
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "NetworkStack/SandboxVpc/isolatedSubnet3"
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "SandboxVpcAAA107BE"
+                }
+            },
+            "Type": "AWS::EC2::RouteTable"
+        },
+        "SandboxVpcisolatedSubnet3Subnet771F2FF4": {
+            "Properties": {
+                "AvailabilityZone": "dummy1c",
+                "CidrBlock": "10.6.80.0/20",
+                "MapPublicIpOnLaunch": false,
+                "Tags": [
+                    {
+                        "Key": "aws-cdk:subnet-name",
+                        "Value": "isolated"
+                    },
+                    {
+                        "Key": "aws-cdk:subnet-type",
+                        "Value": "Isolated"
+                    },
+                    {
+                        "Key": "Name",
+                        "Value": "NetworkStack/SandboxVpc/isolatedSubnet3"
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "SandboxVpcAAA107BE"
+                }
+            },
+            "Type": "AWS::EC2::Subnet"
+        },
+        "SandboxVpcpublicSubnet1DefaultRouteC9E33403": {
+            "DependsOn": [
+                "SandboxVpcVPCGW77762E77"
+            ],
+            "Properties": {
+                "DestinationCidrBlock": "0.0.0.0/0",
+                "GatewayId": {
+                    "Ref": "SandboxVpcIGWBAB9DB24"
+                },
+                "RouteTableId": {
+                    "Ref": "SandboxVpcpublicSubnet1RouteTable7E131CA7"
+                }
+            },
+            "Type": "AWS::EC2::Route"
+        },
+        "SandboxVpcpublicSubnet1RouteTable7E131CA7": {
+            "Properties": {
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "NetworkStack/SandboxVpc/publicSubnet1"
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "SandboxVpcAAA107BE"
+                }
+            },
+            "Type": "AWS::EC2::RouteTable"
+        },
+        "SandboxVpcpublicSubnet1RouteTableAssociation13813928": {
+            "Properties": {
+                "RouteTableId": {
+                    "Ref": "SandboxVpcpublicSubnet1RouteTable7E131CA7"
+                },
+                "SubnetId": {
+                    "Ref": "SandboxVpcpublicSubnet1Subnet71F7CEB7"
+                }
+            },
+            "Type": "AWS::EC2::SubnetRouteTableAssociation"
+        },
+        "SandboxVpcpublicSubnet1Subnet71F7CEB7": {
+            "Properties": {
+                "AvailabilityZone": "dummy1a",
+                "CidrBlock": "10.6.0.0/20",
+                "MapPublicIpOnLaunch": true,
+                "Tags": [
+                    {
+                        "Key": "aws-cdk:subnet-name",
+                        "Value": "public"
+                    },
+                    {
+                        "Key": "aws-cdk:subnet-type",
+                        "Value": "Public"
+                    },
+                    {
+                        "Key": "Name",
+                        "Value": "NetworkStack/SandboxVpc/publicSubnet1"
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "SandboxVpcAAA107BE"
+                }
+            },
+            "Type": "AWS::EC2::Subnet"
+        },
+        "SandboxVpcpublicSubnet2DefaultRoute126F818A": {
+            "DependsOn": [
+                "SandboxVpcVPCGW77762E77"
+            ],
+            "Properties": {
+                "DestinationCidrBlock": "0.0.0.0/0",
+                "GatewayId": {
+                    "Ref": "SandboxVpcIGWBAB9DB24"
+                },
+                "RouteTableId": {
+                    "Ref": "SandboxVpcpublicSubnet2RouteTableE2CFEA00"
+                }
+            },
+            "Type": "AWS::EC2::Route"
+        },
+        "SandboxVpcpublicSubnet2RouteTableAssociationAA9703EE": {
+            "Properties": {
+                "RouteTableId": {
+                    "Ref": "SandboxVpcpublicSubnet2RouteTableE2CFEA00"
+                },
+                "SubnetId": {
+                    "Ref": "SandboxVpcpublicSubnet2SubnetDC0CB345"
+                }
+            },
+            "Type": "AWS::EC2::SubnetRouteTableAssociation"
+        },
+        "SandboxVpcpublicSubnet2RouteTableE2CFEA00": {
+            "Properties": {
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "NetworkStack/SandboxVpc/publicSubnet2"
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "SandboxVpcAAA107BE"
+                }
+            },
+            "Type": "AWS::EC2::RouteTable"
+        },
+        "SandboxVpcpublicSubnet2SubnetDC0CB345": {
+            "Properties": {
+                "AvailabilityZone": "dummy1b",
+                "CidrBlock": "10.6.16.0/20",
+                "MapPublicIpOnLaunch": true,
+                "Tags": [
+                    {
+                        "Key": "aws-cdk:subnet-name",
+                        "Value": "public"
+                    },
+                    {
+                        "Key": "aws-cdk:subnet-type",
+                        "Value": "Public"
+                    },
+                    {
+                        "Key": "Name",
+                        "Value": "NetworkStack/SandboxVpc/publicSubnet2"
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "SandboxVpcAAA107BE"
+                }
+            },
+            "Type": "AWS::EC2::Subnet"
+        },
+        "SandboxVpcpublicSubnet3DefaultRoute71E3A8F2": {
+            "DependsOn": [
+                "SandboxVpcVPCGW77762E77"
+            ],
+            "Properties": {
+                "DestinationCidrBlock": "0.0.0.0/0",
+                "GatewayId": {
+                    "Ref": "SandboxVpcIGWBAB9DB24"
+                },
+                "RouteTableId": {
+                    "Ref": "SandboxVpcpublicSubnet3RouteTableDA8C56E2"
+                }
+            },
+            "Type": "AWS::EC2::Route"
+        },
+        "SandboxVpcpublicSubnet3RouteTableAssociation7A8705F0": {
+            "Properties": {
+                "RouteTableId": {
+                    "Ref": "SandboxVpcpublicSubnet3RouteTableDA8C56E2"
+                },
+                "SubnetId": {
+                    "Ref": "SandboxVpcpublicSubnet3Subnet55683504"
+                }
+            },
+            "Type": "AWS::EC2::SubnetRouteTableAssociation"
+        },
+        "SandboxVpcpublicSubnet3RouteTableDA8C56E2": {
+            "Properties": {
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "NetworkStack/SandboxVpc/publicSubnet3"
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "SandboxVpcAAA107BE"
+                }
+            },
+            "Type": "AWS::EC2::RouteTable"
+        },
+        "SandboxVpcpublicSubnet3Subnet55683504": {
+            "Properties": {
+                "AvailabilityZone": "dummy1c",
+                "CidrBlock": "10.6.32.0/20",
+                "MapPublicIpOnLaunch": true,
+                "Tags": [
+                    {
+                        "Key": "aws-cdk:subnet-name",
+                        "Value": "public"
+                    },
+                    {
+                        "Key": "aws-cdk:subnet-type",
+                        "Value": "Public"
+                    },
+                    {
+                        "Key": "Name",
+                        "Value": "NetworkStack/SandboxVpc/publicSubnet3"
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "SandboxVpcAAA107BE"
+                }
+            },
+            "Type": "AWS::EC2::Subnet"
+        }
+    },
+    "Rules": {
+        "CheckBootstrapVersion": {
+            "Assertions": [
+                {
+                    "Assert": {
+                        "Fn::Not": [
+                            {
+                                "Fn::Contains": [
+                                    [
+                                        "1",
+                                        "2",
+                                        "3",
+                                        "4",
+                                        "5"
+                                    ],
+                                    {
+                                        "Ref": "BootstrapVersion"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+                }
+            ]
+        }
+    }
+}
