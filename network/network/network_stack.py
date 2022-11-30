@@ -13,7 +13,7 @@ class NetworkStack(Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs: Any) -> None:
         super().__init__(scope, construct_id, **kwargs)
-        self.staging_vpc = Vpc(
+        self.sandbox_vpc = Vpc(
             self,
             'SandboxVpc',
             cidr='10.6.0.0/16',
